@@ -1,0 +1,124 @@
+// Main body
+
+.content {
+  width: 100%;
+  height: calc(100% - 64px); // subtract the height of the global toolbar
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+// Selectors header
+
+.selectors {
+  display: flex;
+  justify-content: space-between;
+  margin: 10%;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.filters {
+  flex: 2 1 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.view-switcher {
+  text-align: center;
+  flex: 1 1 40%;
+}
+
+.sorters {
+  flex: 2 1 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+.filter-year {
+  width: 14ch;
+}
+
+.filter-genre {
+  width: 14ch;
+}
+
+.sort-select {
+  width: 14ch;
+  margin-right: 0.5rem;
+}
+
+.sort-criterium {
+  width: 4rem;
+  height: 2rem;
+}
+
+// Bookshelf view
+
+.shelf {
+  display: flex;
+  justify-content: center;
+  align-items: center; // vertical positioning
+  flex: 1 1 auto;
+}
+
+// Metrics footer
+
+$footer-bottom-margin: 2rem;
+
+.footer {
+  width: 100%;
+  display: flex;
+  margin-bottom: $footer-bottom-margin;
+  margin-top: 2rem;
+}
+
+.spacer {
+  flex: 1 1 25%;
+}
+
+.metrics {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 2rem;
+  margin-right: 2rem;
+
+  mat-icon {
+    font-size: 40px;
+    margin-bottom: 0.4rem;
+  }
+}
+
+.info-trigger {
+  flex: 1 1 25%;
+}
+
+.info-popover {
+  max-width: 12rem;
+}
+
+table {
+  width: 10rem;
+}
+
+tr td:nth-child(2) {
+  text-align: right;
+}
+
+// Fab button
+.add-book-button {
+  position: fixed;
+  right: 5%;
+  bottom: 0.5rem;
+  margin-bottom: $footer-bottom-margin;
+}

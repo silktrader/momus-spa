@@ -1,0 +1,98 @@
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+
+  .toolbar-title {
+    text-align: center;
+    flex: 1 1 40%;
+  }
+
+  .toolbar-spacer {
+    flex: 1 1 30%;
+  }
+
+  .toolbar-actions {
+    flex: 1 1 30%;
+    text-align: right;
+
+    button {
+      margin-right: 3rem;
+    }
+  }
+}
+
+mat-tab-group {
+  padding-top: 1rem;
+  height: 70%;
+}
+
+h2 {
+  text-align: center;
+}
+
+.contents {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-contents {
+  width: 30rem;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.author-input {
+  max-width: 36ch;
+}
+
+.cover-address-input {
+  max-width: 36ch;
+}
+
+.language-input {
+  width: 18ch;
+}
+
+.isbn-input {
+  width: 16ch;
+}
+
+.published-date-input,
+.started-date-input,
+.finished-date-input {
+  width: 18ch;
+}
+
+.words-input {
+  width: 8ch;
+}
+
+.hours-input {
+  width: 4ch;
+}
+
+.rating-slider {
+  width: 100%;
+}
+
+// controls section
+
+.controls {
+  position: fixed;
+  right: 3rem;
+  bottom: 2rem;
+  display: flex;
+  justify-content: center;
+
+  .main-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      margin-top: 1rem;
+    }
+  }
+}

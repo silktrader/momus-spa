@@ -1,0 +1,18 @@
+<div class="content">
+
+  <section class="shelf">
+    <div *ngFor="let book of (reviews$ | async).data" class="spine mat-elevation-z8" [ngClass]="[book.genre]"
+      [ngStyle]="{width: 3 + book.hours * 0.5 + 'rem', height: 50 + book.rating * 0.5 + '%'}" (click)="gotoBook(book)">
+      <section class="header">
+        <h4 matTooltip="{{book.author}}" matTooltipPosition="above" matTooltipClass="default-tooltip">{{book.author}}
+        </h4>
+        <h3 matTooltip="{{book.title}}" matTooltipPosition="above" matTooltipClass="default-tooltip">{{book.title}}
+        </h3>
+      </section>
+      <section class="footer">
+        X
+      </section>
+    </div>
+  </section>
+
+</div>

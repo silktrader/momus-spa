@@ -1,0 +1,106 @@
+.black-flag {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  // background: url(../../assets/images/background.png);
+  background-repeat: no-repeat;
+  background-size: 100%; // omit second dimension
+}
+
+.blocks {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background-color: yellow;
+  display: flex;
+  justify-content: space-between;
+  transform: rotate(40deg) translateX(-100px);
+}
+
+.block-a,
+.block-b,
+.block-c,
+.block-d {
+  color: red;
+  background-color: black;
+  height: 100%;
+  width: 20%;
+}
+
+.name {
+  font-size: 400%;
+  font-weight: bolder;
+  color: #dfe2d7;
+  transform: rotate(-45deg) translateY(180px);
+}
+
+a {
+  text-decoration: none;
+}
+
+.contacts {
+  font-weight: bolder;
+  color: darkred;
+  transform: rotate(45deg) translateX(460px) translateY(-600px);
+  width: 200px;
+  text-align: right;
+}
+
+.email {
+  // transform: rotate(45deg) translateX(650px) translateY(-200px);
+}
+
+.github {
+  // transform: rotate(45deg) translateX(650px) translateY(-200px);
+
+  a {
+    color: darkred;
+  }
+}
+
+// .block-a {
+//   position: absolute;
+//   left: 0;
+//   height: 50%;
+// }
+
+// .block-b {
+//   position: absolute;
+//   left: 25%;
+// }
+
+// .block-c {
+//   position: absolute;
+//   left: 50%;
+// }
+
+// .block-d {
+//   position: absolute;
+//   left: 75%;
+// }
+
+.block-a {
+  height: 100%;
+  width: 20%;
+  //transform: rotate(40deg) translateX(-60%) translateY(-25%);
+}
+
+.block-b {
+  height: 100%;
+  width: 20%;
+  //transform: rotate(40deg) translateX(-60%) translateY(5%);
+}
+
+.block-c {
+  height: 100%;
+  width: 20%;
+  //transform: rotate(40deg) translateX(-60%) translateY(30%);
+}
+
+.block-d {
+  height: 100%;
+  width: 20%;
+  //transform: rotate(40deg) translateX(-60%) translateY(45%);
+}

@@ -1,0 +1,147 @@
+.contents {
+  display: flex;
+  height: 90vh; // tk
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.details {
+  width: 40ch;
+
+  .details-container {
+    position: fixed;
+    width: inherit;
+  }
+
+  h2 {
+    margin-bottom: 0.2rem;
+  }
+
+  h3 {
+    margin-top: 0.2rem;
+    font-variant: small-caps;
+  }
+}
+
+.review {
+  width: 60ch;
+  height: 100%;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  aside p {
+    text-align: right;
+    margin-bottom: 0.1rem;
+    font-style: italic;
+  }
+
+  p {
+    text-align: justify;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+.quotes {
+  width: 50ch;
+}
+
+.cover {
+  position: relative;
+}
+
+.book-cover {
+  width: 100%;
+  object-fit: contain;
+  // height: auto;
+}
+
+.rating {
+  position: absolute;
+  top: 0%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  width: 5rem;
+  font-weight: bold;
+  font-size: large;
+  background-image: url('/assets/images/star.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+
+  .stats-item {
+    display: flex;
+    height: 5rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    img {
+      height: 3rem;
+    }
+
+    span {
+      font-weight: 500;
+    }
+  }
+}
+
+.tags {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  width: 100%;
+  display: flex;
+}
+
+// the alternative is to set view encapsulation to 'none'
+::ng-deep .mat-chip-list-wrapper {
+  justify-content: center;
+}
+
+//Colors
+$black: #648767;
+$white: #f7f2e6;
+
+// quotes
+blockquote {
+  font-family: 'EB Garamond';
+  font-size: larger;
+  font-weight: 500;
+  font-style: italic;
+  border-left: 8px solid $black;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: '“' '”';
+  text-align: justify;
+  margin-bottom: 5rem;
+}
+
+blockquote:before {
+  color: $black;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.edit {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}

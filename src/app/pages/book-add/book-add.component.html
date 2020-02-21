@@ -1,0 +1,140 @@
+<mat-toolbar>
+  <div class="toolbar-spacer"></div>
+  <span class="tollbar-title">Edit Book</span>
+  <div class="toolbar-actions">
+    <button mat-raised-button color="warn" (click)="deleteBook()">
+      Delete
+    </button>
+    <button mat-raised-button (click)="resetForm()" [disabled]=!formsEdited>
+      Reset
+    </button>
+    <button mat-raised-button (click)="goUpwards()">
+      Discard
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Details">
+
+    <div class="contents">
+
+      <form [formGroup]="detailsForm" class="form-contents">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input formControlName="title" matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>URL</mat-label>
+          <input formControlName="url" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="author-input">
+          <mat-label>Author</mat-label>
+          <input formControlName="author" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="cover-address-input">
+          <mat-label>Cover</mat-label>
+          <input matInput formControlName="cover" type="url">
+        </mat-form-field>
+
+        <mat-form-field class="language-input">
+          <mat-label>Language</mat-label>
+          <mat-select formControlName="language">
+            <mat-option value="English">English</mat-option>
+            <mat-option value="French">French</mat-option>
+            <mat-option value="Italian">Italian</mat-option>
+            <mat-option value="Spanish">Spanish</mat-option>
+            <mat-option value="Portuguese">Portuguese</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="isbn-input">
+          <mat-label>ISBN</mat-label>
+          <input formControlName="isbn" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="published-date-input">
+          <mat-label>Published Date</mat-label>
+          <input matInput formControlName="published" [matDatepicker]="publishedDatePicker">
+          <mat-datepicker-toggle matSuffix [for]="publishedDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #publishedDatePicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="words-input">
+          <mat-label>Words</mat-label>
+          <input matInput formControlName="words" type="number">
+        </mat-form-field>
+
+        <mat-form-field class="tags-input">
+          <mat-chip-list #tagList aria-label="Tags selection">
+            <mat-chip *ngFor="let tag of tags" removable="true" (removed)="remove(tag)">
+              {{tag}}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Tags" [matChipInputFor]="tagList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="addTag($event)">
+          </mat-chip-list>
+        </mat-form-field>
+      </form>
+
+    </div>
+  </mat-tab>
+  <mat-tab label="Reading">
+    <div class="contents">
+
+      <form [formGroup]="readingForm" class="form-contents">
+        <mat-form-field class="started-date-input">
+          <mat-label>Started Date</mat-label>
+          <input matInput formControlName="started" [matDatepicker]="startedDatePicker">
+          <mat-datepicker-toggle matSuffix [for]="startedDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startedDatePicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="finished-date-input">
+          <mat-label>Finished Date</mat-label>
+          <input matInput formControlName="finished" [matDatepicker]="finishedDatePicker">
+          <mat-datepicker-toggle matSuffix [for]="finishedDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #finishedDatePicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="hours-input">
+          <mat-label>Hours</mat-label>
+          <input matInput formControlName="hours" type="number">
+        </mat-form-field>
+
+        <div>
+          <mat-label>Rating</mat-label>
+          <mat-slider class="rating-slider" [thumbLabel]="true" formControlName="rating" min="0" max="99" step="1"
+            value="50"></mat-slider>
+        </div>
+      </form>
+
+    </div>
+  </mat-tab>
+  <mat-tab label="Review">
+
+    <div class="contents">
+      <form [formGroup]="reviewForm" class="form-contents">
+        <mat-form-field class="review-input">
+          <mat-label>Review Contents</mat-label>
+          <textarea matInput formControlName="contents"></textarea>
+        </mat-form-field>
+      </form>
+    </div>
+
+  </mat-tab>
+
+  <mat-tab label="Citations">Content 3</mat-tab>
+</mat-tab-group>
+
+<div class="controls">
+  <div class="main-controls">
+
+    <button mat-fab (click)="handleBook()">
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+</div>

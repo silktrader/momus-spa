@@ -1,0 +1,28 @@
+mat-toolbar {
+  padding-left: 20rem;
+  padding-right: 20rem;
+  display: flex;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+}
+
+[mat-menu-item] {
+  font-family: 'Oswald';
+}
+
+.explore-button {
+  display: flex;
+  align-items: center;
+}
+
+h3 {
+  margin-right: 5rem;
+  padding-bottom: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  text-transform: uppercase;
+}

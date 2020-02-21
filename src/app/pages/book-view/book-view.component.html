@@ -1,0 +1,94 @@
+<ng-template #loading>
+  Loading ...
+</ng-template>
+
+<div class="contents" *ngIf="book$ | async as book; else loading">
+
+  <section class="details">
+
+    <div class="details-container">
+
+      <h2>{{book.details.title}}</h2>
+      <h3>{{book.details.author}}</h3>
+
+      <div class="cover">
+        <img src="{{book.details.cover}}" class="book-cover" />
+
+        <div class="rating">
+          <span>{{book.details.rating || '?'}}</span>
+        </div>
+      </div>
+
+      <div class="tags">
+        <mat-chip-list aria-label="Book tags">
+          <mat-chip color="accent" selected>Fiction</mat-chip>
+          <mat-chip color="accent" selected>Italian</mat-chip>
+          <mat-chip color="accent" selected>2006</mat-chip>
+          <mat-chip>History</mat-chip>
+          <mat-chip>Italy</mat-chip>
+          <mat-chip>France</mat-chip>
+          <mat-chip>Descriptive</mat-chip>
+          <mat-chip>Nunmerompe</mat-chip>
+        </mat-chip-list>
+      </div>
+
+      <div class="stats">
+        <div class="stats-item">
+          <img src="./assets/images/words.svg">
+          <span>{{book.details.words}} words</span>
+        </div>
+        <div class="stats-item">
+          <img src="assets/images/hours.png">
+          <span>{{book.details.hours}} hours</span>
+        </div>
+        <div class="stats-item">
+          <img src="assets/images/weeks.svg">
+          <span>23 weeks</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="review">
+
+    <header>
+      <h2>Review</h2>
+      <aside>
+        <p>— reviewed on August, the 17th 2019</p>
+      </aside>
+    </header>
+
+    <article class="mat-body-2">
+
+      {{book.review.contents}}
+    </article>
+  </section>
+
+  <section class="quotes">
+
+    <h2>Citations</h2>
+
+    <blockquote>
+      Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono realmente
+      esistiti e hanno fatto quello che hanno fatto.
+    </blockquote>
+
+    <blockquote>
+      Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono realmente
+      esistiti e hanno fatto quello che hanno fatto.
+    </blockquote>
+
+    <blockquote>
+      Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono realmente
+      esistiti e hanno fatto quello che hanno fatto.
+    </blockquote>
+
+  </section>
+
+  <a class="edit" mat-fab aria-label="Edit book details" routerLink="./edit">
+    <mat-icon>edit</mat-icon>
+  </a>
+
+</div>

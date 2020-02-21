@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <h3>Momus</h3>
+
+  <button mat-button [matMenuTriggerFor]="menu">
+    <span class="explore-button">Explore <mat-icon>arrow_drop_down</mat-icon></span>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="subMenuReviews">Reviews</button>
+    <button mat-menu-item>Statistics</button>
+  </mat-menu>
+
+  <mat-menu #subMenuReviews="matMenu">
+    <button mat-menu-item>2020</button>
+    <button mat-menu-item>2019</button>
+    <button mat-menu-item>2018</button>
+  </mat-menu>
+
+
+  <a mat-button routerLink="/books">Reviews</a>
+  <a mat-button routerLink="/statistics">Statistics</a>
+  <a mat-button routerLink="/about">About</a>
+
+</mat-toolbar>
+<router-outlet></router-outlet>
