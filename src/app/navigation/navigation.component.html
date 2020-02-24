@@ -1,5 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-  <h3>Momus</h3>
+  <a class="home-button" mat-button routerLink="/home">
+    <h4>Momus</h4>
+  </a>
 
   <button mat-button [matMenuTriggerFor]="menu">
     <span class="explore-button">Explore <mat-icon>arrow_drop_down</mat-icon></span>
@@ -17,6 +19,7 @@
 
 
   <a mat-button routerLink="/books">Reviews</a>
+  <a mat-button routerLink="/about">Reading List</a>
   <a mat-button routerLink="/statistics">Statistics</a>
   <a mat-button routerLink="/about">About</a>
 
