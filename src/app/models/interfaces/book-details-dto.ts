@@ -8,7 +8,7 @@ export interface BookDetailsDto {
   words: number;
   language: string;
   cover: string;
-  genre: string;
+  category: 'Fiction' | 'Nonfiction' | 'Poetry' | 'Comics';
 
   published: string;
   started: string;

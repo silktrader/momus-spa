@@ -7,7 +7,7 @@ export class BookDetails {
   readonly words: number;
   readonly language: string;
   readonly cover: string;
-  readonly genre: string;
+  readonly category: string;
   readonly published: Date;
   readonly started: Date;
   readonly finished: Date;
@@ -23,7 +23,7 @@ export class BookDetails {
     words,
     language,
     cover,
-    genre,
+    category,
     published,
     started,
     finished,
@@ -39,7 +39,7 @@ export class BookDetails {
     words: number;
     language: string;
     cover: string;
-    genre: string;
+    category: string;
     published: Date;
     started: Date;
     finished: Date;
@@ -55,7 +55,7 @@ export class BookDetails {
     this.words = words;
     this.language = language;
     this.cover = cover;
-    this.genre = genre;
+    this.category = category;
     this.published = published;
     this.started = started;
     this.finished = finished;

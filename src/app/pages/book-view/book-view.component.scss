@@ -7,6 +7,8 @@
   margin-right: 5%;
 }
 
+// Details section
+
 .details {
   width: 40ch;
 
@@ -24,6 +26,11 @@
     font-variant: small-caps;
   }
 }
+
+mat-basic-chip {
+}
+
+// Review section
 
 .review {
   width: 60ch;

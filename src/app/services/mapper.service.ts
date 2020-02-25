@@ -25,7 +25,7 @@ export class MapperService {
       words: dto.words,
       language: dto.language,
       cover: dto.cover,
-      genre: dto.genre || 'Fiction', // defaults to fiction when missing
+      category: dto.category,
       published: new Date(dto.published),
       started: new Date(dto.started),
       finished: new Date(dto.finished),

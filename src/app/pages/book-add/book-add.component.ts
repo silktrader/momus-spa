@@ -21,7 +21,8 @@ export class BookAddComponent implements OnInit {
     language: undefined,
     published: undefined,
     words: undefined,
-    cover: undefined
+    cover: undefined,
+    category: 'Fiction'
   });
 
   readingForm = this.fb.group({
@@ -50,8 +51,7 @@ export class BookAddComponent implements OnInit {
         id: this.cachedBook ? this.cachedBook.details.id : undefined,
         ...this.detailsForm.value,
         ...this.readingForm.value,
-        reviewed: undefined,
-        genre: 'Fiction'
+        reviewed: undefined
       },
       review: {
         ...this.reviewForm.value

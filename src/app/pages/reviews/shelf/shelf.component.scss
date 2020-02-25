@@ -1,3 +1,5 @@
+// @use 'assets/css/categories';
+
 .content {
   display: flex;
   flex-direction: column;
@@ -23,18 +25,6 @@
   cursor: pointer;
   margin-right: -1px; // avoid double borders
   margin-left: -1px; // avoid double borders
-}
-
-.fiction {
-  background-color: #2a628f;
-}
-
-.nonfiction {
-  background-color: #9e4770;
-}
-
-.philosophy {
-  background-color: #a39261;
 }
 
 .header {
@@ -77,3 +67,20 @@
 .default-tooltip {
   font-size: 120%;
 }
+
+// .non-fiction {
+//   background-color: #173042;
+// }
+
+// .fiction {
+//   background-color: var(--fiction-background-colour);
+//   color: var(--fiction-text-colour);
+// }
+
+// .poetry {
+//   background-color: #9d96b8;
+// }
+
+// .comics {
+//   background-color: #bfae48;
+// }

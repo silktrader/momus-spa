@@ -63,6 +63,13 @@
           <mat-datepicker #publishedDatePicker></mat-datepicker>
         </mat-form-field>
 
+        <mat-button-toggle-group #categories="matButtonToggleGroup" aria-label="Categories" formControlName="category">
+          <mat-button-toggle value="Fiction">Fiction</mat-button-toggle>
+          <mat-button-toggle value="Nonfiction">Non Fiction</mat-button-toggle>
+          <mat-button-toggle value="Poetry">Poetry</mat-button-toggle>
+          <mat-button-toggle value="Comics">Comics</mat-button-toggle>
+        </mat-button-toggle-group>
+
         <mat-form-field class="words-input">
           <mat-label>Words</mat-label>
           <input matInput formControlName="words" type="number">

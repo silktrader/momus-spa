@@ -21,7 +21,9 @@
 
       <div class="tags">
         <mat-chip-list aria-label="Book tags">
-          <mat-chip color="accent" selected>Fiction</mat-chip>
+          <mat-basic-chip [ngClass]="['mat-standard-chip', book.details.category.toLowerCase()]">
+            {{book.details.category}}
+          </mat-basic-chip>
           <mat-chip color="accent" selected>Italian</mat-chip>
           <mat-chip color="accent" selected>2006</mat-chip>
           <mat-chip>History</mat-chip>
