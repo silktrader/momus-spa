@@ -12,42 +12,22 @@
 
   </div>
 
-  <div class="latest-reviews">
+  <div class="latest-reviews" *ngIf="(latestReviews$ | async) as latestReviews">
 
     <div class="more">
       <h3>Latest <br />Reviews</h3>
       <h4>as of <br /> June, the 20th<br /> 2019</h4>
     </div>
 
-    <div class="book-card">
-      <img
-        src="https://kbimages1-a.akamaihd.net/84c4d7a5-981e-4053-8b60-f87ee3c1082f/1200/1200/False/anna-karenina-41.jpg">
-    </div>
-    <div class="book-card">
-      <img
-        src="https://kbimages1-a.akamaihd.net/84c4d7a5-981e-4053-8b60-f87ee3c1082f/1200/1200/False/anna-karenina-41.jpg">
-    </div>
-
-    <div class="book-card">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/A1aDb5U5myL.jpg">
-    </div>
-    <div class="book-card">
-      <img
-        src="https://kbimages1-a.akamaihd.net/84c4d7a5-981e-4053-8b60-f87ee3c1082f/1200/1200/False/anna-karenina-41.jpg">
-    </div>
-    <div class="book-card">
-      <img src="https://images-eu.ssl-images-amazon.com/images/I/51HtoT29yOL.jpg">
-    </div>
-    <div class="book-card">
-      <img src="https://images-eu.ssl-images-amazon.com/images/I/51HtoT29yOL.jpg">
-    </div>
-    <div class="book-card">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/A1aDb5U5myL.jpg">
+    <div *ngFor="let book of latestReviews" class="book-card">
+      <a [routerLink]="'/books/'+book.url">
+        <img [src]="book.cover">
+      </a>
     </div>
 
     <div class="book-card">
       <div class="wrapper">
-        <button mat-stroked-button color="accent">
+        <button mat-stroked-button color="accent" routerLink="/books">
           Read More
         </button>
       </div>

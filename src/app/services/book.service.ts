@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BookDetails } from '../models/book-details.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -33,6 +33,14 @@ export class BookService {
     return this.http
       .get<Array<BookDetailsDto>>(url)
       .pipe(map(books => books.map((item, index) => this.ms.mapBookDetails(item))));
+  }
+
+  public getLatestBooks(latest: number): Observable<Array<BookDetails>> {
+    let params = new HttpParams();
+    params = params.append('latest', latest.toString());
+    return this.http
+      .get<Array<BookDetailsDto>>(this.booksUrl + 'latest', { params })
+      .pipe(map(books => books.map(this.ms.mapBookDetails)));
   }
 
   public addBook(book: BookDto): Observable<BookDto> {
