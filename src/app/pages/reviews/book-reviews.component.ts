@@ -3,7 +3,7 @@ import { BehaviorSubject, Subscription, of, ReplaySubject } from 'rxjs';
 import { ReviewSet } from 'src/app/models/review-set';
 import { SortOrder } from 'src/app/models/sort-order.enum';
 import { BookService } from 'src/app/services/book.service';
-import { MatSelect } from '@angular/material';
+import { MatSelect } from '@angular/material/select';
 import { FormControl } from '@angular/forms';
 
 @Component({
