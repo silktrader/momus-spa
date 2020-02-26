@@ -1,6 +1,6 @@
 <mat-toolbar>
   <div class="toolbar-spacer"></div>
-  <span class="tollbar-title">Edit Book</span>
+  <h4 class="toolbar-title">Edit Book</h4>
   <div class="toolbar-actions">
     <button mat-raised-button color="warn" (click)="deleteBook()">
       Delete
@@ -20,12 +20,13 @@
     <div class="contents">
 
       <form [formGroup]="detailsForm" class="form-contents">
-        <mat-form-field>
+
+        <mat-form-field class="title-input">
           <mat-label>Title</mat-label>
           <input formControlName="title" matInput>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="url-input">
           <mat-label>URL</mat-label>
           <input formControlName="url" matInput>
         </mat-form-field>
@@ -40,40 +41,56 @@
           <input matInput formControlName="cover" type="url">
         </mat-form-field>
 
-        <mat-form-field class="language-input">
-          <mat-label>Language</mat-label>
-          <mat-select formControlName="language">
-            <mat-option value="English">English</mat-option>
-            <mat-option value="French">French</mat-option>
-            <mat-option value="Italian">Italian</mat-option>
-            <mat-option value="Spanish">Spanish</mat-option>
-            <mat-option value="Portuguese">Portuguese</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="inline-fields">
 
-        <mat-form-field class="isbn-input">
-          <mat-label>ISBN</mat-label>
-          <input formControlName="isbn" matInput>
-        </mat-form-field>
+          <mat-form-field class="language-input">
+            <mat-label>Language</mat-label>
+            <mat-select formControlName="language">
+              <mat-option value="English">English</mat-option>
+              <mat-option value="French">French</mat-option>
+              <mat-option value="Italian">Italian</mat-option>
+              <mat-option value="Spanish">Spanish</mat-option>
+              <mat-option value="Portuguese">Portuguese</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-        <mat-form-field class="published-date-input">
-          <mat-label>Published Date</mat-label>
-          <input matInput formControlName="published" [matDatepicker]="publishedDatePicker">
-          <mat-datepicker-toggle matSuffix [for]="publishedDatePicker"></mat-datepicker-toggle>
-          <mat-datepicker #publishedDatePicker></mat-datepicker>
-        </mat-form-field>
+          <mat-form-field class="language-input">
+            <mat-label>Translation</mat-label>
+            <mat-select formControlName="language">
+              <mat-option value="English">English</mat-option>
+              <mat-option value="French">French</mat-option>
+              <mat-option value="Italian">Italian</mat-option>
+              <mat-option value="Spanish">Spanish</mat-option>
+              <mat-option value="Portuguese">Portuguese</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-        <mat-button-toggle-group #categories="matButtonToggleGroup" aria-label="Categories" formControlName="category">
-          <mat-button-toggle value="Fiction">Fiction</mat-button-toggle>
-          <mat-button-toggle value="Nonfiction">Non Fiction</mat-button-toggle>
-          <mat-button-toggle value="Poetry">Poetry</mat-button-toggle>
-          <mat-button-toggle value="Comics">Comics</mat-button-toggle>
-        </mat-button-toggle-group>
+        <div class="inline-fields">
 
-        <mat-form-field class="words-input">
-          <mat-label>Words</mat-label>
-          <input matInput formControlName="words" type="number">
-        </mat-form-field>
+          <mat-form-field class="published-date-input">
+            <mat-label>Published</mat-label>
+            <input matInput formControlName="published" [matDatepicker]="publishedDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="publishedDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #publishedDatePicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="words-input">
+            <mat-label>Words</mat-label>
+            <input matInput formControlName="words" type="number">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <label>Category:</label>
+          <mat-button-toggle-group #categories="matButtonToggleGroup" aria-label="Categories" formControlName="category"
+            class="categories-input">
+            <mat-button-toggle value="Fiction">Fiction</mat-button-toggle>
+            <mat-button-toggle value="Nonfiction">Non Fiction</mat-button-toggle>
+            <mat-button-toggle value="Poetry">Poetry</mat-button-toggle>
+            <mat-button-toggle value="Comics">Comics</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
 
         <mat-form-field class="tags-input">
           <mat-chip-list #tagList aria-label="Tags selection">
@@ -89,19 +106,31 @@
 
     </div>
   </mat-tab>
+
+  <mat-tab label="Addenda">
+    <div class="contents">
+      <form [formGroup]="addendaForm" class="form-contents">
+        <mat-form-field class="isbn-input">
+          <mat-label>ISBN</mat-label>
+          <input formControlName="isbn" matInput>
+        </mat-form-field>
+      </form>
+    </div>
+  </mat-tab>
+
   <mat-tab label="Reading">
     <div class="contents">
 
       <form [formGroup]="readingForm" class="form-contents">
         <mat-form-field class="started-date-input">
-          <mat-label>Started Date</mat-label>
+          <mat-label>Started</mat-label>
           <input matInput formControlName="started" [matDatepicker]="startedDatePicker">
           <mat-datepicker-toggle matSuffix [for]="startedDatePicker"></mat-datepicker-toggle>
           <mat-datepicker #startedDatePicker></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field class="finished-date-input">
-          <mat-label>Finished Date</mat-label>
+          <mat-label>Finished</mat-label>
           <input matInput formControlName="finished" [matDatepicker]="finishedDatePicker">
           <mat-datepicker-toggle matSuffix [for]="finishedDatePicker"></mat-datepicker-toggle>
           <mat-datepicker #finishedDatePicker></mat-datepicker>

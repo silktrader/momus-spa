@@ -14,7 +14,6 @@ import { BookDto } from 'src/app/models/interfaces/book-dto';
 })
 export class BookAddComponent implements OnInit {
   detailsForm = this.fb.group({
-    isbn: undefined,
     author: undefined,
     title: undefined,
     url: undefined,
@@ -36,6 +35,10 @@ export class BookAddComponent implements OnInit {
     contents: undefined
   });
 
+  addendaForm = this.fb.group({
+    isbn: undefined
+  });
+
   private get shortUrl(): string {
     return this.route.snapshot.params.shortUrl;
   }
@@ -51,6 +54,7 @@ export class BookAddComponent implements OnInit {
         id: this.cachedBook ? this.cachedBook.details.id : undefined,
         ...this.detailsForm.value,
         ...this.readingForm.value,
+        ...this.addendaForm.value,
         reviewed: undefined
       },
       review: {

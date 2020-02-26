@@ -1,118 +1,107 @@
+@use '../../../assets/css/categories';
+
+// must exceed half the rating's width
+$horizontal-margin: 3rem;
+
 .contents {
   display: flex;
   height: 90vh; // tk
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 2rem;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: $horizontal-margin;
+  margin-right: $horizontal-margin;
 }
 
 // Details section
 
 .details {
-  width: 40ch;
+  width: 25em;
+  min-width: 25em;
+  height: inherit;
+  margin-right: $horizontal-margin;
 
   .details-container {
     position: fixed;
     width: inherit;
-  }
-
-  h2 {
-    margin-bottom: 0.2rem;
-  }
-
-  h3 {
-    margin-top: 0.2rem;
-    font-variant: small-caps;
-  }
-}
-
-mat-basic-chip {
-}
-
-// Review section
-
-.review {
-  width: 60ch;
-  height: 100%;
-
-  header {
+    height: inherit;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  aside p {
-    text-align: right;
-    margin-bottom: 0.1rem;
-    font-style: italic;
-  }
-
-  p {
-    text-align: justify;
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-}
-
-.quotes {
-  width: 50ch;
-}
-
-.cover {
-  position: relative;
-}
-
-.book-cover {
-  width: 100%;
-  object-fit: contain;
-  // height: auto;
-}
-
-.rating {
-  position: absolute;
-  top: 0%;
-  left: 100%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 5rem;
-  width: 5rem;
-  font-weight: bold;
-  font-size: large;
-  background-image: url('/assets/images/star.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.stats {
-  display: flex;
-  justify-content: space-between;
-
-  .stats-item {
-    display: flex;
-    height: 5rem;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-between;
 
-    img {
-      height: 3rem;
+    header {
+      flex: 1 0 10%;
+
+      h2 {
+        margin-bottom: 0.2rem;
+      }
+
+      h3 {
+        margin-top: 0.2rem;
+        font-variant: small-caps;
+      }
     }
 
-    span {
-      font-weight: 500;
+    .cover {
+      max-width: 25em;
+      position: relative;
+      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+
+      .book-cover {
+        max-width: 25em;
+        max-height: inherit;
+      }
+
+      .rating {
+        position: absolute;
+        top: 0%;
+        left: 100%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5rem;
+        width: 5rem;
+        font-weight: bold;
+        font-size: large;
+        background-image: url('/assets/images/star.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .tags {
+      width: 100%;
+      flex: 1 0 15%;
+      display: flex;
+      align-items: center;
+    }
+
+    .stats {
+      display: flex;
+      flex: 1 0 auto;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .stats-item {
+        display: flex;
+        height: 5rem;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        img {
+          height: 3rem;
+        }
+
+        span {
+          font-weight: 500;
+        }
+      }
     }
   }
-}
-
-.tags {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  width: 100%;
-  display: flex;
 }
 
 // the alternative is to set view encapsulation to 'none'
@@ -120,35 +109,102 @@ mat-basic-chip {
   justify-content: center;
 }
 
-//Colors
-$black: #648767;
-$white: #f7f2e6;
-
-// quotes
-blockquote {
-  font-family: 'EB Garamond';
-  font-size: larger;
-  font-weight: 500;
-  font-style: italic;
-  border-left: 8px solid $black;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-  quotes: '“' '”';
-  text-align: justify;
-  margin-bottom: 5rem;
+mat-basic-chip {
 }
 
-blockquote:before {
-  color: $black;
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
+// Review section
+.review {
+  width: 35em;
+  text-align: justify;
+  margin-right: $horizontal-margin;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    aside p {
+      text-align: right;
+      margin-bottom: 0.1rem;
+      font-style: italic;
+    }
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+// quotes
+.quotes {
+  width: 30em;
+
+  h2 {
+    text-align: right;
+  }
+
+  blockquote {
+    font-family: 'EB Garamond';
+    line-height: 1.5rem; // necessary to offset the first line's height due to quotation marks
+    font-weight: 500;
+    font-style: italic;
+    border-left: 8px solid var(--accent-color);
+    margin: 0px;
+    margin-bottom: 4rem;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    quotes: '“' '”';
+    text-align: justify;
+  }
+
+  blockquote:before {
+    color: var(--accent-color);
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
 }
 
 .edit {
   position: fixed;
   bottom: 50px;
   right: 50px;
+}
+
+// small devices
+@media only screen and (max-width: 90rem) {
+  .contents {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+
+    > section {
+      width: 35rem;
+      margin: 0;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .details {
+    .details-container {
+      position: static;
+      align-items: center;
+
+      > * {
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+    }
+  }
+
+  .quotes {
+    h2 {
+      text-align: left;
+    }
+  }
 }

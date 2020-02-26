@@ -63,4 +63,11 @@ export class BookDetails {
     this.rating = rating;
     this.hours = hours;
   }
+
+  public static categoryLabel(label: string) {
+    if (label.toLowerCase() === 'nonfiction') {
+      return 'Non Fiction';
+    }
+    return label;
+  }
 }

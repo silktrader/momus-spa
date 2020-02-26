@@ -3,6 +3,7 @@ import { BookService } from 'src/app/services/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { Observable } from 'rxjs';
+import { BookDetails } from 'src/app/models/book-details.model';
 
 @Component({
   selector: 'app-book-view',
@@ -20,5 +21,9 @@ export class BookViewComponent implements OnInit {
 
   ngOnInit() {
     this.book$ = this.bs.getBook(this.shortUrl);
+  }
+
+  public categoryLabel(label: string): string {
+    return BookDetails.categoryLabel(label);
   }
 }

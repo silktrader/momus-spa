@@ -37,18 +37,25 @@ h2 {
 }
 
 .form-contents {
-  width: 30rem;
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
 }
 
+.title-input {
+  width: 38ch;
+}
+
+.url-input {
+  width: 30ch;
+}
+
 .author-input {
-  max-width: 36ch;
+  width: 30ch;
 }
 
 .cover-address-input {
-  max-width: 36ch;
+  width: 40ch;
 }
 
 .language-input {
@@ -66,15 +73,26 @@ h2 {
 }
 
 .words-input {
-  width: 8ch;
+  width: 10ch;
+}
+
+.categories-input {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: max-content;
 }
 
 .hours-input {
-  width: 4ch;
+  width: 6ch;
 }
 
 .rating-slider {
   width: 100%;
+}
+
+.inline-fields :first-child {
+  margin-right: 4rem;
 }
 
 // controls section

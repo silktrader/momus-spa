@@ -8,12 +8,13 @@
 
     <div class="details-container">
 
-      <h2>{{book.details.title}}</h2>
-      <h3>{{book.details.author}}</h3>
+      <header>
+        <h2>{{book.details.title}}</h2>
+        <h3>{{book.details.author}}</h3>
+      </header>
 
       <div class="cover">
         <img src="{{book.details.cover}}" class="book-cover" />
-
         <div class="rating">
           <span>{{book.details.rating || '?'}}</span>
         </div>
@@ -22,15 +23,14 @@
       <div class="tags">
         <mat-chip-list aria-label="Book tags">
           <mat-basic-chip [ngClass]="['mat-standard-chip', book.details.category.toLowerCase()]">
-            {{book.details.category}}
+            {{categoryLabel(book.details.category)}}
           </mat-basic-chip>
-          <mat-chip color="accent" selected>Italian</mat-chip>
-          <mat-chip color="accent" selected>2006</mat-chip>
+          <mat-chip color="accent" selected>{{book.details.language}}</mat-chip>
+          <mat-chip color="accent" selected>{{book.details.published?.getFullYear()}}</mat-chip>
           <mat-chip>History</mat-chip>
           <mat-chip>Italy</mat-chip>
           <mat-chip>France</mat-chip>
           <mat-chip>Descriptive</mat-chip>
-          <mat-chip>Nunmerompe</mat-chip>
         </mat-chip-list>
       </div>
 
@@ -53,6 +53,8 @@
 
   </section>
 
+  <!-- <div class="right-wrapper"> -->
+
   <section class="review">
 
     <header>
@@ -72,22 +74,27 @@
 
     <h2>Citations</h2>
 
-    <blockquote>
-      Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono realmente
+    <blockquote>Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono
+      realmente esistiti e hanno fatto quello che hanno fatto.
+    </blockquote>
+
+    <blockquote>Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono
+      realmente
       esistiti e hanno fatto quello che hanno fatto.
     </blockquote>
 
-    <blockquote>
-      Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono realmente
+    <blockquote>Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono
+      realmente
       esistiti e hanno fatto quello che hanno fatto.
     </blockquote>
 
-    <blockquote>
-      Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono realmente
+    <blockquote>Tranne un particolare. Eccetto il protagonista, tutti gli altri personaggi di questo romanzo sono
+      realmente
       esistiti e hanno fatto quello che hanno fatto.
     </blockquote>
 
   </section>
+  <!-- </div> -->
 
   <a class="edit" mat-fab aria-label="Edit book details" routerLink="./edit">
     <mat-icon>edit</mat-icon>

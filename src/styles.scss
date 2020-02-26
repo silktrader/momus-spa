@@ -9,12 +9,12 @@ $fontConfig: (
   display-3: mat-typography-level(56px, 56px, 500, 'Oswald', -0.0089em),
   display-2: mat-typography-level(45px, 48px, 500, 'Oswald', 0em),
   display-1: mat-typography-level(34px, 40px, 500, 'Oswald', 0.0074em),
-  headline: mat-typography-level(24px, 32px, 500, 'Oswald', 0em),
-  title: mat-typography-level(28px, 32px, 500, 'Oswald', 0.0054em),
-  subheading-2: mat-typography-level(16px, 28px, 500, 'Oswald', 0.0094em),
-  subheading-1: mat-typography-level(15px, 24px, 500, 'Oswald', 0.0067em),
-  body-2: mat-typography-level(18px, 24px, 500, 'EB Garamond', 0.0156em),
-  body-1: mat-typography-level(16px, 20px, 500, 'EB Garamond', 0.0179em),
+  headline: mat-typography-level(34px, 34px, 500, 'EB Garamond', 0em),
+  title: mat-typography-level(32px, 32px, 500, 'EB Garamond', 0.0054em),
+  subheading-2: mat-typography-level(24px, 26px, 500, 'EB Garamond', 0.0094em),
+  subheading-1: mat-typography-level(18px, 22px, 500, 'EB Garamond', 0.0067em),
+  body-2: mat-typography-level(18px, 22px, 500, 'EB Garamond', 0.0156em),
+  body-1: mat-typography-level(16px, 18px, 500, 'Oswald', 0.0179em),
   button: mat-typography-level(16px, 16px, 500, 'Oswald', 0.0893em),
   caption: mat-typography-level(14px, 20px, 500, 'Oswald', 0.0333em),
   input: mat-typography-level(inherit, 1.125, 500, 'Oswald', 1.5px)
@@ -244,4 +244,15 @@ html,
 body {
   height: 100%;
   margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+mat-button-toggle {
+  font-family: 'Oswald';
 }
