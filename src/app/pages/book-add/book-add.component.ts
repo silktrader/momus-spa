@@ -53,6 +53,7 @@ export class BookAddComponent implements OnInit {
       details: {
         id: this.cachedBook ? this.cachedBook.details.id : undefined,
         ...this.detailsForm.value,
+        tags: this.tags,
         ...this.readingForm.value,
         ...this.addendaForm.value,
         reviewed: undefined
@@ -76,6 +77,9 @@ export class BookAddComponent implements OnInit {
       this.bs.getBook(this.shortUrl).subscribe(book => {
         this.cachedBook = book;
         this.resetForm();
+
+        // add tags
+        this.tags = book.details.tags ? [...book.details.tags] : [];
       });
     } else {
       console.log('new entry');
@@ -87,7 +91,7 @@ export class BookAddComponent implements OnInit {
     const value = event.value;
 
     if ((value || '').trim()) {
-      this.tags.push(value.trim());
+      this.tags.push(value.trim().toLowerCase());
     }
 
     // reset the input value
@@ -155,9 +159,7 @@ export class BookAddComponent implements OnInit {
   }
 
   private updateBook() {
-    console.log(this.editedBook);
     this.bs.updateBook(this.editedBook).subscribe(book => {
-      console.log('Updated ' + book);
       this.goUpwards();
     });
   }

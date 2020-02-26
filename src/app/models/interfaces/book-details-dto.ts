@@ -9,6 +9,7 @@ export interface BookDetailsDto {
   language: string;
   cover: string;
   category: 'Fiction' | 'Nonfiction' | 'Poetry' | 'Comics';
+  tags: Array<string>;
 
   published: string;
   started: string;

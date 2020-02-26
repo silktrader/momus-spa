@@ -26,6 +26,7 @@ export class MapperService {
       language: dto.language,
       cover: dto.cover,
       category: dto.category,
+      tags: dto.tags,
       published: new Date(dto.published),
       started: new Date(dto.started),
       finished: new Date(dto.finished),

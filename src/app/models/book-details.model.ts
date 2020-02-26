@@ -8,6 +8,7 @@ export class BookDetails {
   readonly language: string;
   readonly cover: string;
   readonly category: string;
+  readonly tags: string[];
   readonly published: Date;
   readonly started: Date;
   readonly finished: Date;
@@ -24,6 +25,7 @@ export class BookDetails {
     language,
     cover,
     category,
+    tags,
     published,
     started,
     finished,
@@ -40,6 +42,7 @@ export class BookDetails {
     language: string;
     cover: string;
     category: string;
+    tags: string[];
     published: Date;
     started: Date;
     finished: Date;
@@ -56,6 +59,7 @@ export class BookDetails {
     this.language = language;
     this.cover = cover;
     this.category = category;
+    this.tags = tags;
     this.published = published;
     this.started = started;
     this.finished = finished;

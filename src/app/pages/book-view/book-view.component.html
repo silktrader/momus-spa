@@ -27,10 +27,7 @@
           </mat-basic-chip>
           <mat-chip color="accent" selected>{{book.details.language}}</mat-chip>
           <mat-chip color="accent" selected>{{book.details.published?.getFullYear()}}</mat-chip>
-          <mat-chip>History</mat-chip>
-          <mat-chip>Italy</mat-chip>
-          <mat-chip>France</mat-chip>
-          <mat-chip>Descriptive</mat-chip>
+          <mat-chip *ngFor="let tag of book.details.tags">{{tag}}</mat-chip>
         </mat-chip-list>
       </div>
 

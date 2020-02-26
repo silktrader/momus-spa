@@ -47,10 +47,11 @@ $horizontal-margin: 3rem;
       text-align: right;
       display: flex;
       justify-content: flex-end;
+      margin: auto; // centers cover
 
       .book-cover {
         max-width: 25em;
-        max-height: inherit;
+        max-height: 30em;
       }
 
       .rating {
@@ -109,7 +110,8 @@ $horizontal-margin: 3rem;
   justify-content: center;
 }
 
-mat-basic-chip {
+mat-chip {
+  text-transform: capitalize;
 }
 
 // Review section
