@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BookReviewsComponent } from './pages/reviews/book-reviews.component';
 import { BookViewComponent } from './pages/book-view/book-view.component';
 import { BookAddComponent } from './pages/book-add/book-add.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'books', component: BookReviewsComponent },
   { path: 'books/new', component: BookAddComponent },
   { path: 'books/:shortUrl', component: BookViewComponent },
-  { path: 'books/:shortUrl/edit', component: BookAddComponent }
+  { path: 'books/:shortUrl/edit', component: BookAddComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

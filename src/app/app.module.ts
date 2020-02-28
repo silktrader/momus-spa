@@ -13,7 +13,9 @@ import { MdePopoverModule } from '@material-extended/mde';
 import { BookViewComponent } from './pages/book-view/book-view.component';
 import { BookAddComponent } from './pages/book-add/book-add.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoginDialogComponent } from './dialogs/login/login-dialog.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     ShelfComponent,
     NavigationComponent,
     BookViewComponent,
-    BookAddComponent
+    BookAddComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  entryComponents: [LoginDialogComponent],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

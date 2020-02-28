@@ -37,7 +37,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCardModule,
     MatSidenavModule,
     MatRippleModule,
-    MatDialogModule,
     MatIconModule,
     MatBadgeModule,
     MatTooltipModule,
@@ -46,7 +45,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTabsModule,
     MatSliderModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
   ],
   exports: [
     MatToolbarModule,
@@ -61,7 +61,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCardModule,
     MatSidenavModule,
     MatRippleModule,
-    MatDialogModule,
     MatIconModule,
     MatBadgeModule,
     MatTooltipModule,
@@ -70,7 +69,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTabsModule,
     MatSliderModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
   ]
 })
-export class MaterialModule { }
+export class MaterialModule {}
