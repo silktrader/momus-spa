@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { Observable } from 'rxjs';
 import { BookDetails } from 'src/app/models/book-details.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-book-view',
@@ -17,7 +18,15 @@ export class BookViewComponent implements OnInit {
     return this.route.snapshot.params.shortUrl;
   }
 
-  constructor(private bs: BookService, private route: ActivatedRoute) {}
+  public get admin$() {
+    return this.as.admin$;
+  }
+
+  constructor(
+    private bs: BookService,
+    private as: AuthenticationService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.book$ = this.bs.getBook(this.shortUrl);

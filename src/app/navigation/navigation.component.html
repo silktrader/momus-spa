@@ -24,10 +24,10 @@
   <a mat-button routerLink="/about">About</a>
 
   <ng-template #login>
-    <button mat-button (click)="promptPassword()">Login</button>
+    <button class="admin-login" mat-button (click)="promptPassword()">Login</button>
   </ng-template>
 
-  <button *ngIf="admin$ | async; else login" mat-button (click)="logoff()">Logout</button>
+  <button class="admin-logout" *ngIf="admin$ | async; else login" mat-button (click)="logoff()">Logout</button>
 
 </mat-toolbar>
 <router-outlet></router-outlet>

@@ -156,7 +156,7 @@
     </mat-card>
   </mde-popover>
 
-  <a class="add-book-button" mat-fab routerLink="new">
+  <a *ngIf="admin$ | async" class="add-book-button" mat-fab routerLink="new">
     <mat-icon>add</mat-icon>
   </a>
 

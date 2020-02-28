@@ -93,7 +93,7 @@
   </section>
   <!-- </div> -->
 
-  <a class="edit" mat-fab aria-label="Edit book details" routerLink="./edit">
+  <a *ngIf="admin$ | async" class="edit" mat-fab aria-label="Edit book details" routerLink="./edit">
     <mat-icon>edit</mat-icon>
   </a>
 

@@ -46,8 +46,8 @@ $horizontal-margin: 3rem;
       position: relative;
       text-align: right;
       display: flex;
-      justify-content: flex-end;
       margin: auto; // centers cover
+      margin-bottom: 2rem;
 
       .book-cover {
         max-width: 25em;
@@ -76,7 +76,7 @@ $horizontal-margin: 3rem;
       width: 100%;
       flex: 1 0 15%;
       display: flex;
-      align-items: center;
+      justify-content: center;
     }
 
     .stats {
@@ -196,6 +196,11 @@ mat-chip {
     .details-container {
       position: static;
       align-items: center;
+
+      .cover {
+        margin-bottom: 2rem;
+        justify-content: center;
+      }
 
       > * {
         margin-bottom: 2rem;
