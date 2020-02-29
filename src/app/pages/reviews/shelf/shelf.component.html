@@ -3,7 +3,8 @@
   <section class="shelf">
     <div *ngFor="let book of (reviews$ | async).data"
       [ngClass]="['spine', 'mat-elevation-z8', book.category.toLowerCase()]"
-      [ngStyle]="{width: 3 + book.hours * 0.5 + 'rem', height: 50 + book.rating * 0.5 + '%'}" (click)="gotoBook(book)">
+      [ngStyle]="{width: 3.5 + book.hours * 0.5 + 'rem', height: 50 + book.rating * 0.5 + '%'}"
+      (click)="gotoBook(book)">
       <section class="header">
         <h4 matTooltip="{{book.author}}" matTooltipPosition="above" matTooltipClass="default-tooltip">{{book.author}}
         </h4>

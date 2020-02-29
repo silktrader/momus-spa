@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginDialogComponent } from './dialogs/login/login-dialog.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { ThousandsPipe } from './pipes/thousands.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     NavigationComponent,
     BookViewComponent,
     BookAddComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    ThousandsPipe
   ],
   imports: [
     BrowserModule,

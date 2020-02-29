@@ -56,19 +56,19 @@
       <!-- Hours read -->
       <div class="metric-item" [mdePopoverTriggerFor]="hoursPopover">
         <mat-icon [inline]="true">access_time</mat-icon>
-        <span>{{metrics.hours}}</span>
+        <span>{{metrics.hours}} hours</span>
       </div>
 
       <!-- Words read -->
       <div class="metric-item" [mdePopoverTriggerFor]="pagesPopover">
         <mat-icon [inline]="true">description</mat-icon>
-        <span>{{metrics.words}}</span>
+        <span>{{metrics.words | thousands}} words</span>
       </div>
 
       <!-- Average rating -->
       <div class="metric-item" [mdePopoverTriggerFor]="ratingsPopover">
         <mat-icon [inline]="true">star</mat-icon>
-        <span>{{metrics.totalRating / metrics.books | number: '1.1-1'}}</span>
+        <span>{{metrics.totalRating / metrics.books | number: '1.1-1'}} rating</span>
       </div>
     </div>
 

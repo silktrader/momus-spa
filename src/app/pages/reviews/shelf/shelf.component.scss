@@ -38,8 +38,7 @@
   h4 {
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    width: 1.5rem;
-    margin: 0.2rem;
+    line-height: 2rem; // avoid text being clipped vertically
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -61,20 +60,3 @@
 .default-tooltip {
   font-size: 120%;
 }
-
-// .non-fiction {
-//   background-color: #173042;
-// }
-
-// .fiction {
-//   background-color: var(--fiction-background-colour);
-//   color: var(--fiction-text-colour);
-// }
-
-// .poetry {
-//   background-color: #9d96b8;
-// }
-
-// .comics {
-//   background-color: #bfae48;
-// }
