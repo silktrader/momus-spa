@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BookService } from 'src/app/services/book.service';
 import { BookDetails } from 'src/app/models/book-details.model';
@@ -6,7 +6,8 @@ import { BookDetails } from 'src/app/models/book-details.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
   latestReviews$: Observable<Array<BookDetails>>;

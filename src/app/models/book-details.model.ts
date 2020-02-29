@@ -8,7 +8,7 @@ export class BookDetails {
   readonly language: string;
   readonly cover: string;
   readonly category: string;
-  readonly tags: string[];
+  readonly tags: ReadonlyArray<string>;
   readonly published: Date;
   readonly started: Date;
   readonly finished: Date;

@@ -5,7 +5,7 @@ export class Book {
   public readonly interval: number | null;
   public readonly shortenedWords: string;
 
-  constructor(public details: BookDetails, public review: BookReview) {
+  constructor(public readonly details: BookDetails, public readonly review: BookReview) {
     // running these calculations in the constructor saves multiple iterations while rendering
     this.interval = this.calculateInterval();
     this.shortenedWords = this.calculateShortenedWords();

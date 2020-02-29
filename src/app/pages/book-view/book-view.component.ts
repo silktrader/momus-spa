@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BookService } from 'src/app/services/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/models/book';
@@ -9,7 +9,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 @Component({
   selector: 'app-book-view',
   templateUrl: './book-view.component.html',
-  styleUrls: ['./book-view.component.scss']
+  styleUrls: ['./book-view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookViewComponent implements OnInit {
   book$: Observable<Book>;

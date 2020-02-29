@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { ReviewSet } from 'src/app/models/review-set';
 import { SortOrder } from 'src/app/models/sort-order.enum';
@@ -9,7 +9,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 @Component({
   selector: 'app-book-reviews',
   templateUrl: './book-reviews.component.html',
-  styleUrls: ['./book-reviews.component.scss']
+  styleUrls: ['./book-reviews.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookReviewsComponent implements OnInit, OnDestroy {
   finishedYears: Array<string>;
@@ -18,17 +19,17 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
   sortCriterium: 'date' | 'rating' | 'hours' = 'date';
   sortOrder: SortOrder = SortOrder.Ascending;
 
-  reviews: BehaviorSubject<ReviewSet> = new BehaviorSubject(new ReviewSet([]));
-  filteredReviews: BehaviorSubject<ReviewSet> = new BehaviorSubject(new ReviewSet([]));
+  readonly reviews$: BehaviorSubject<ReviewSet> = new BehaviorSubject(new ReviewSet([]));
 
   metrics: {
-    books: number;
-    words: number;
-    hours: number;
-    totalRating: number;
-    ratingsDeviation: number;
+    readonly books: number;
+    readonly words: number;
+    readonly hours: number;
+    readonly totalRating: number;
+    readonly ratingsDeviation: number;
   };
-  subscription = new Subscription();
+
+  private subscription = new Subscription();
 
   constructor(private bs: BookService, private as: AuthenticationService) {}
 
@@ -41,7 +42,7 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.yearSelector.valueChanges.subscribe(yearSelected => {
         this.bs.getBooks(yearSelected).subscribe(books => {
-          this.reviews.next(new ReviewSet(books));
+          this.reviews$.next(new ReviewSet(books));
           this.updateBooks();
         });
       })
@@ -56,7 +57,7 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.add(
-      this.filteredReviews.subscribe(reviews => {
+      this.reviews$.subscribe(reviews => {
         this.calculateMetrics(reviews);
       })
     );
@@ -67,8 +68,8 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
   }
 
   updateBooks() {
-    this.filteredReviews.next(
-      this.reviews.value
+    this.reviews$.next(
+      this.reviews$.value
         // .filterYear([this.selectedYear$.value])
         .sort(this.sortCriterium, this.sortOrder)
     );
