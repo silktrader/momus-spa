@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ThousandsPipe implements PipeTransform {
   transform(value: number, ...args: unknown[]): string {
-    if (Number.isNaN(value)) {
+    if (value == null || Number.isNaN(value)) {
       return '?';
     }
 

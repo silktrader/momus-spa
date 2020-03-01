@@ -10,7 +10,7 @@ import { AuthenticationService } from '../services/authentication.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationComponent {
-  admin$ = this.as.admin$;
+  readonly admin$ = this.as.admin$;
 
   constructor(public dialog: MatDialog, private as: AuthenticationService) {}
 

@@ -1,0 +1,25 @@
+tr {
+  cursor: pointer;
+}
+
+tr:hover {
+  background-color: var(--accent-lighter-color);
+}
+
+.title-cell {
+  padding-right: 1rem; // allow for some room
+}
+
+.number-cell {
+  padding-left: 1.5rem;
+  text-align: right;
+}
+
+.date-cell {
+  padding-left: 1.5rem;
+  text-align: right;
+}
+
+.finished {
+  padding-left: 0;
+}

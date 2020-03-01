@@ -64,6 +64,14 @@
   flex: 1 1 auto;
 }
 
+// Table view
+
+.table {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
 // Metrics footer
 
 $footer-bottom-margin: 2rem;

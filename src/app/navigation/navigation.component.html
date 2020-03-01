@@ -3,21 +3,6 @@
     <h4>Momus</h4>
   </a>
 
-  <button mat-button [matMenuTriggerFor]="menu">
-    <span class="explore-button">Explore <mat-icon>arrow_drop_down</mat-icon></span>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="subMenuReviews">Reviews</button>
-    <button mat-menu-item>Statistics</button>
-  </mat-menu>
-
-  <mat-menu #subMenuReviews="matMenu">
-    <button mat-menu-item>2020</button>
-    <button mat-menu-item>2019</button>
-    <button mat-menu-item>2018</button>
-  </mat-menu>
-
-
   <a mat-button routerLink="/books">Reviews</a>
   <a mat-button routerLink="/about">Reading List</a>
   <a mat-button routerLink="/statistics">Statistics</a>

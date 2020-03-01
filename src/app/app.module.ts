@@ -17,6 +17,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginDialogComponent } from './dialogs/login/login-dialog.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ThousandsPipe } from './pipes/thousands.pipe';
+import { TableComponent } from './pages/reviews/table/table.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ThousandsPipe } from './pipes/thousands.pipe';
     BookViewComponent,
     BookAddComponent,
     LoginDialogComponent,
-    ThousandsPipe
+    ThousandsPipe,
+    TableComponent
   ],
   imports: [
     BrowserModule,
