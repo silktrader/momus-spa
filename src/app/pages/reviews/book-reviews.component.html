@@ -15,9 +15,10 @@
     </div>
 
     <div class="view-switcher">
-      <mat-button-toggle-group #group="matButtonToggleGroup" value="shelf" aria-label="View Switcher">
-        <mat-button-toggle value="table" aria-label="Table View">Table</mat-button-toggle>
+      <mat-button-toggle-group #group="matButtonToggleGroup" value="shelf" aria-label="View Switcher"
+        (change)="changeView(group.value)">
         <mat-button-toggle value="shelf" aria-label="Shelf View">Shelf</mat-button-toggle>
+        <mat-button-toggle value="table" aria-label="Table View">Table</mat-button-toggle>
       </mat-button-toggle-group>
     </div>
 
@@ -43,13 +44,15 @@
 
   </div>
 
-  <!-- <div class="shelf">
+  <div class="shelf" *ngIf="(selectedView$ | async) === 'shelf'; else tableView">
     <app-spine [reviews$]="reviews$"></app-spine>
-  </div> -->
-
-  <div class="table">
-    <app-table [reviews$]='reviews$'></app-table>
   </div>
+
+  <ng-template #tableView>
+    <div class="table">
+      <app-table [reviews$]='reviews$'></app-table>
+    </div>
+  </ng-template>
 
   <div class="footer mat-body-1">
     <div class="spacer"></div>

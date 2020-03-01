@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription, Observable, of } from 'rxjs';
 import { ReviewSet } from 'src/app/models/review-set';
 import { SortOrder } from 'src/app/models/sort-order.enum';
 import { BookService } from 'src/app/services/book.service';
@@ -18,6 +18,8 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
 
   sortCriterium: 'date' | 'rating' | 'hours' = 'date';
   sortOrder: SortOrder = SortOrder.Ascending;
+
+  readonly selectedView$ = new BehaviorSubject<'shelf' | 'table'>('shelf');
 
   readonly reviews$: BehaviorSubject<ReviewSet> = new BehaviorSubject(new ReviewSet([]));
 
@@ -113,5 +115,9 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
 
   parseYear(year: number | null): string {
     return year ? year.toString() : 'Unknown';
+  }
+
+  changeView(viewName: 'shelf' | 'table'): void {
+    this.selectedView$.next(viewName);
   }
 }
