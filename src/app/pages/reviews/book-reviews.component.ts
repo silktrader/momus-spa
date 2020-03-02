@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription, forkJoin } from 'rxjs';
 import { ReviewSet } from 'src/app/models/review-set';
 import { SortOrder } from 'src/app/models/sort-order.enum';
 import { BookService } from 'src/app/services/book.service';
@@ -15,7 +15,9 @@ import { ReviewSetSort } from 'src/app/models/interfaces/review-set-sort';
 })
 export class BookReviewsComponent implements OnInit, OnDestroy {
   finishedYears: Array<string>;
-  yearSelector = new FormControl();
+
+  readonly singleYearSelector = new FormControl();
+  readonly multipleYearSelector = new FormControl();
 
   sort: ReviewSetSort = { criterium: 'finished', order: SortOrder.Ascending };
 
@@ -42,7 +44,7 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // watch the year selector for changes and download new book details as required
     this.subscription.add(
-      this.yearSelector.valueChanges.subscribe(yearSelected => {
+      this.singleYearSelector.valueChanges.subscribe(yearSelected => {
         this.bs.getBooks(yearSelected).subscribe(books => {
           this.reviews$.next(new ReviewSet(books));
           this.updateBooks();
@@ -51,12 +53,30 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.add(
-      this.bs.getFinishedYears().subscribe(years => {
-        this.finishedYears = years.map(this.parseYear);
-        // set the initial year selection
-        this.yearSelector.setValue(this.parseYear(years[0]));
+      this.multipleYearSelector.valueChanges.subscribe((yearsSelected: Array<number>) => {
+        const booksYears$ = yearsSelected.map(year => this.bs.getBooks(year));
+        forkJoin(booksYears$).subscribe(bookDetails => {
+          // flatten arrays to get a finall array of book details
+          this.reviews$.next(new ReviewSet([].concat(...bookDetails)));
+          this.updateBooks();
+        });
       })
     );
+
+    // http client call completes without needing to unsubscribe
+    this.bs.getFinishedYears().subscribe(years => {
+      this.finishedYears = years.map(this.parseYear);
+      // set the initial year selection
+      this.subscription.add(
+        this.selectedView$.subscribe(view => {
+          if (view === 'table') {
+            this.multipleYearSelector.setValue([this.finishedYears[0]]);
+          } else if (view === 'shelf') {
+            this.singleYearSelector.setValue(this.finishedYears[0]);
+          }
+        })
+      );
+    });
 
     this.subscription.add(
       this.reviews$.subscribe(reviews => {

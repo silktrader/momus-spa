@@ -5,13 +5,23 @@
     <div class="filters">
       <mat-form-field class="filter-year">
         <mat-label>Year</mat-label>
-        <mat-select [formControl]="yearSelector">
+        <mat-select *ngIf="(selectedView$ | async) === 'shelf'; else multipleTimeSelect"
+          [formControl]="singleYearSelector">
           <mat-option *ngFor="let year of finishedYears" [value]="year">
             {{parseYear(year)}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
 
+        <!-- the `multiple` attribute can't be changed after initialisation -->
+        <ng-template #multipleTimeSelect>
+          <mat-select [formControl]="multipleYearSelector" multiple>
+            <mat-option *ngFor="let year of finishedYears" [value]="year">
+              {{parseYear(year)}}
+            </mat-option>
+          </mat-select>
+        </ng-template>
+
+      </mat-form-field>
     </div>
 
     <div class="view-switcher">
