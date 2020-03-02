@@ -25,6 +25,31 @@
   cursor: pointer;
   margin-right: -1px; // avoid double borders
   margin-left: -1px; // avoid double borders
+
+  .popover {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    width: auto;
+    width: 20rem;
+    margin-top: 5rem;
+    margin-left: -5rem;
+  }
+}
+
+.spine:hover {
+  .header h3,
+  .header h4 {
+    visibility: hidden;
+  }
+}
+
+.spine:hover .popover {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -20px);
+  transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
 }
 
 .header {

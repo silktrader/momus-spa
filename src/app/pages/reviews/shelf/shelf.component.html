@@ -6,15 +6,29 @@
       [ngStyle]="{width: 3.5 + book.hours * 0.5 + 'rem', height: 50 + book.rating * 0.5 + '%'}"
       (click)="gotoBook(book)">
       <section class="header">
-        <h4 matTooltip="{{book.author}}" matTooltipPosition="above" matTooltipClass="default-tooltip">{{book.author}}
-        </h4>
-        <h3 matTooltip="{{book.title}}" matTooltipPosition="above" matTooltipClass="default-tooltip">{{book.title}}
-        </h3>
+        <h4>{{book.author}}</h4>
+        <h3>{{book.title}}</h3>
       </section>
       <section class="footer">
         X
       </section>
+
+      <aside class="popover">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              <h3>{{book.title}}</h3>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <h4>{{book.author}}</h4>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+          </mat-card-content>
+        </mat-card>
+      </aside>
     </div>
+
   </section>
 
 </div>

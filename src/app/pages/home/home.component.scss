@@ -1,8 +1,6 @@
 .contents {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  // margin-left: 10%;
-  // margin-right: 10%;
   height: calc(100% - 64px - 5rem);
   display: flex;
   justify-content: space-evenly;
@@ -32,10 +30,6 @@
   }
 
   h2 {
-    align-self: flex-end;
-    margin: 0;
-    margin-right: 1rem;
-    text-align: right;
     font-style: italic;
   }
 
