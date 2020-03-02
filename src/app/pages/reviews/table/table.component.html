@@ -1,38 +1,43 @@
 <table mat-table [dataSource]="data$" matSort class="mat-elevation-z8" (matSortChange)="sortReviews($event)">
 
   <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-cell">Title</th>
-    <td mat-cell *matCellDef="let book" class="title-cell">{{book.title}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-cell">Title</th>
+    <td mat-cell *matCellDef="let book" class="text-cell">{{book.title}}</td>
   </ng-container>
 
   <ng-container matColumnDef="author">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-cell">Author</th>
-    <td mat-cell *matCellDef="let book" class="title-cell">{{book.author}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-cell">Author</th>
+    <td mat-cell *matCellDef="let book" class="text-cell">{{book.author}}</td>
   </ng-container>
 
   <ng-container matColumnDef="category">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-cell">Category</th>
-    <td mat-cell *matCellDef="let book" class="title-cell">{{book.category}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-cell">Category</th>
+    <td mat-cell *matCellDef="let book" class="text-cell">{{book.category}}</td>
   </ng-container>
 
   <ng-container matColumnDef="language">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-cell">Language</th>
-    <td mat-cell *matCellDef="let book" class="title-cell">{{book.language}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-cell">Language</th>
+    <td mat-cell *matCellDef="let book" class="text-cell">{{book.language}}</td>
   </ng-container>
 
   <ng-container matColumnDef="published">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-cell">Published</th>
-    <td mat-cell *matCellDef="let book" class="title-cell">{{book.published.getFullYear()}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="center-cell">Published</th>
+    <td mat-cell *matCellDef="let book" class="center-cell">{{book.published.getFullYear()}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="started">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-cell">Started</th>
+    <td mat-cell *matCellDef="let book" class="text-cell">{{book.started | date}}</td>
   </ng-container>
 
   <ng-container matColumnDef="finished">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="date-cell finished">Finished</th>
-    <td mat-cell *matCellDef="let book" class="date-cell finished">{{book.finished | date}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-cell">Finished</th>
+    <td mat-cell *matCellDef="let book" class="text-cell">{{book.finished | date}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="rating">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="number-cell">Rating</th>
-    <td mat-cell *matCellDef="let book" class="number-cell">{{book.rating}}</td>
+  <ng-container matColumnDef="hours">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="hours-cell">Hours</th>
+    <td mat-cell *matCellDef="let book" class="hours-cell">{{book.hours}}</td>
   </ng-container>
 
   <ng-container matColumnDef="words">
@@ -40,11 +45,13 @@
     <td mat-cell *matCellDef="let book" class="number-cell">{{book.words | thousands}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="hours">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="number-cell">Hours</th>
-    <td mat-cell *matCellDef="let book" class="number-cell">{{book.hours}}</td>
+  <ng-container matColumnDef="rating">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="number-cell">Rating</th>
+    <td mat-cell *matCellDef="let book" class="number-cell">{{book.rating}}</td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
-  <tr mat-row *matRowDef="let book; columns: displayedColumns;" (click)="goTo(book)"></tr>
+  <ng-container *ngIf="(displayedColumns$ | async) as displayedColumns">
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
+    <tr mat-row *matRowDef="let book; columns: displayedColumns" (click)="goTo(book)"></tr>
+  </ng-container>
 </table>

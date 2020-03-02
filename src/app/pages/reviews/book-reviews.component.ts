@@ -19,11 +19,15 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
   readonly singleYearSelector = new FormControl();
   readonly multipleYearSelector = new FormControl();
 
+  readonly availableColumns = ['category', 'language', 'started'];
+  readonly columnsSelector = new FormControl();
+
   sort: ReviewSetSort = { criterium: 'finished', order: SortOrder.Ascending };
 
   readonly selectedView$ = new BehaviorSubject<'shelf' | 'table'>('shelf');
+  readonly extraColumns$ = new BehaviorSubject<Array<string>>([]);
 
-  readonly reviews$: BehaviorSubject<ReviewSet> = new BehaviorSubject(new ReviewSet([]));
+  readonly reviews$ = new BehaviorSubject(new ReviewSet([]));
 
   metrics: {
     readonly books: number;
@@ -42,6 +46,22 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // http client call completes without needing to unsubscribe
+    this.bs.getFinishedYears().subscribe(years => {
+      this.finishedYears = years.map(this.parseYear);
+      // set the initial year selection
+      this.subscription.add(
+        this.selectedView$.subscribe(view => {
+          if (view === 'table') {
+            this.multipleYearSelector.setValue([this.finishedYears[0]]);
+            this.columnsSelector.setValue([]);
+          } else if (view === 'shelf') {
+            this.singleYearSelector.setValue(this.finishedYears[0]);
+          }
+        })
+      );
+    });
+
     // watch the year selector for changes and download new book details as required
     this.subscription.add(
       this.singleYearSelector.valueChanges.subscribe(yearSelected => {
@@ -56,31 +76,23 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
       this.multipleYearSelector.valueChanges.subscribe((yearsSelected: Array<number>) => {
         const booksYears$ = yearsSelected.map(year => this.bs.getBooks(year));
         forkJoin(booksYears$).subscribe(bookDetails => {
-          // flatten arrays to get a finall array of book details
+          // flatten arrays to get a final array of book details
           this.reviews$.next(new ReviewSet([].concat(...bookDetails)));
           this.updateBooks();
         });
       })
     );
 
-    // http client call completes without needing to unsubscribe
-    this.bs.getFinishedYears().subscribe(years => {
-      this.finishedYears = years.map(this.parseYear);
-      // set the initial year selection
-      this.subscription.add(
-        this.selectedView$.subscribe(view => {
-          if (view === 'table') {
-            this.multipleYearSelector.setValue([this.finishedYears[0]]);
-          } else if (view === 'shelf') {
-            this.singleYearSelector.setValue(this.finishedYears[0]);
-          }
-        })
-      );
-    });
-
     this.subscription.add(
       this.reviews$.subscribe(reviews => {
         this.calculateMetrics(reviews);
+      })
+    );
+
+    // watch the column selectors
+    this.subscription.add(
+      this.columnsSelector.valueChanges.subscribe(columns => {
+        this.extraColumns$.next(columns);
       })
     );
   }
@@ -90,11 +102,7 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
   }
 
   updateBooks() {
-    this.reviews$.next(
-      this.reviews$.value
-        // .filterYear([this.selectedYear$.value])
-        .sort(this.sort)
-    );
+    this.reviews$.next(this.reviews$.value.sort(this.sort));
   }
 
   calculateMetrics(reviews: ReviewSet) {

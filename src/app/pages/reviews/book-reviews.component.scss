@@ -30,7 +30,8 @@
   flex: 1 1 40%;
 }
 
-.sorters {
+.sorters,
+.table-controls {
   flex: 2 1 30%;
   display: flex;
   justify-content: flex-end;
@@ -50,9 +51,21 @@
   margin-right: 0.5rem;
 }
 
+.column-select {
+  margin-right: 0.5rem;
+}
+
 .sort-criterium {
   width: 4rem;
   height: 2rem;
+}
+
+.table-controls mat-form-field {
+  width: 18ch;
+}
+
+::ng-deep .mat-option-text {
+  text-transform: capitalize;
 }
 
 // Bookshelf view

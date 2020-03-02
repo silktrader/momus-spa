@@ -11,20 +11,22 @@ tr:hover {
   background-color: inherit;
 }
 
-.title-cell {
+.text-cell {
   padding-right: 1rem; // allow for some room
+}
+
+.center-cell {
+  text-align: center;
+  padding-right: 1rem;
+}
+
+// the first of the numeric cells with a minimal padding
+.hours-cell {
+  padding-left: 0;
+  text-align: right;
 }
 
 .number-cell {
   padding-left: 1.5rem;
   text-align: right;
-}
-
-.date-cell {
-  padding-left: 1.5rem;
-  text-align: right;
-}
-
-.finished {
-  padding-left: 0;
 }

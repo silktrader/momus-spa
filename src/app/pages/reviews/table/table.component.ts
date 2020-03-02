@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Sort } from '@angular/material/sort';
 import { take } from 'rxjs/operators';
 import { SortOrder } from 'src/app/models/sort-order.enum';
-import { SortCriterium } from 'src/app/models/interfaces/review-set-sort';
+import { SortCriterium } from 'src/app/models/types/sort-criterium';
 
 @Component({
   selector: 'app-table',
@@ -15,19 +15,36 @@ import { SortCriterium } from 'src/app/models/interfaces/review-set-sort';
 })
 export class TableComponent implements OnInit {
   @Input() reviews$: Observable<ReviewSet>;
+  @Input() extraColumns$: Observable<ReadonlyArray<SortCriterium>>;
 
   private readonly dataSubject$ = new BehaviorSubject<Array<BookDetails>>([]);
   readonly data$ = this.dataSubject$.asObservable();
-  readonly displayedColumns: string[] = [
+  readonly displayedColumns$ = new BehaviorSubject<Array<string>>([]);
+
+  // those columns which will be displayed in every case
+  private readonly baseColumns: ReadonlyArray<SortCriterium> = [
+    'title',
+    'author',
+    'published',
+    'finished',
+    'hours',
+    'words',
+    'rating'
+  ];
+
+  // the ideal order columns should be displayed in
+  private readonly idealOrder: ReadonlyArray<SortCriterium> = [
     'title',
     'author',
     'category',
     'language',
     'published',
+    'started',
     'finished',
-    'rating',
+    'reviewed',
+    'hours',
     'words',
-    'hours'
+    'rating'
   ];
 
   private readonly subscription = new Subscription();
@@ -39,6 +56,13 @@ export class TableComponent implements OnInit {
       this.reviews$.subscribe(reviewSet => {
         this.dataSubject$.next(reviewSet.data);
       })
+    );
+
+    // add the extra columns specified by the selector
+    this.subscription.add(
+      this.extraColumns$.subscribe(extras =>
+        this.displayedColumns$.next(this.arrangeColumns(this.baseColumns.concat(extras)))
+      )
     );
   }
 
@@ -55,5 +79,16 @@ export class TableComponent implements OnInit {
         }).data
       )
     );
+  }
+
+  // sort columns as specified in `idealOrder` to contextualise them
+  private arrangeColumns(columns: Array<SortCriterium>): Array<SortCriterium> {
+    const finalColumns: Array<SortCriterium> = [];
+    for (const column of this.idealOrder) {
+      if (columns.includes(column)) {
+        finalColumns.push(column);
+      }
+    }
+    return finalColumns;
   }
 }

@@ -1,17 +1,5 @@
 import { SortOrder } from '../sort-order.enum';
-
-export type SortCriterium =
-  | 'title'
-  | 'author'
-  | 'language'
-  | 'category'
-  | 'rating'
-  | 'hours'
-  | 'words'
-  | 'published'
-  | 'started'
-  | 'finished'
-  | 'reviewed';
+import { SortCriterium } from '../types/sort-criterium';
 
 export interface ReviewSetSort {
   criterium: SortCriterium;
