@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject, Subscription, Observable, of } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { ReviewSet } from 'src/app/models/review-set';
 import { SortOrder } from 'src/app/models/sort-order.enum';
 import { BookService } from 'src/app/services/book.service';
 import { FormControl } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ReviewSetSort } from 'src/app/models/interfaces/review-set-sort';
 
 @Component({
   selector: 'app-book-reviews',
@@ -16,8 +17,7 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
   finishedYears: Array<string>;
   yearSelector = new FormControl();
 
-  sortCriterium: 'date' | 'rating' | 'hours' = 'date';
-  sortOrder: SortOrder = SortOrder.Ascending;
+  sort: ReviewSetSort = { criterium: 'finished', order: SortOrder.Ascending };
 
   readonly selectedView$ = new BehaviorSubject<'shelf' | 'table'>('shelf');
 
@@ -73,7 +73,7 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
     this.reviews$.next(
       this.reviews$.value
         // .filterYear([this.selectedYear$.value])
-        .sort(this.sortCriterium, this.sortOrder)
+        .sort(this.sort)
     );
   }
 
@@ -104,10 +104,10 @@ export class BookReviewsComponent implements OnInit, OnDestroy {
   }
 
   toggleSortOrder() {
-    if (this.sortOrder === SortOrder.Ascending) {
-      this.sortOrder = SortOrder.Descending;
+    if (this.sort.order === SortOrder.Ascending) {
+      this.sort.order = SortOrder.Descending;
     } else {
-      this.sortOrder = SortOrder.Ascending;
+      this.sort.order = SortOrder.Ascending;
     }
 
     this.updateBooks(); // the bit about filtering is unnecessary, split? tk

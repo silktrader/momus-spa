@@ -1,6 +1,6 @@
 import { BookDetails } from 'src/app/models/book-details.model';
-import { throwError } from 'rxjs';
 import { SortOrder } from './sort-order.enum';
+import { ReviewSetSort } from './interfaces/review-set-sort';
 
 export class ReviewSet {
   public get data() {
@@ -17,23 +17,23 @@ export class ReviewSet {
     );
   }
 
-  private sortDate(order: SortOrder): ReviewSet {
+  // private sortPublished(order: SortOrder): ReviewSet {
+  //   return this.order(
+  //     [...this.reviews].sort((a, b) => a.finished.getFullYear() - b.finished.getFullYear()),
+  //     order
+  //   );
+  // }
+
+  private sortNumeric(prop: string, order: SortOrder): ReviewSet {
     return this.order(
-      [...this.reviews].sort((a, b) => a.finished.getFullYear() - b.finished.getFullYear()),
+      [...this.reviews].sort((a, b) => a[prop] - b[prop]),
       order
     );
   }
 
-  private sortRating(order: SortOrder): ReviewSet {
+  private sortAlphabetic(prop: string, order: SortOrder): ReviewSet {
     return this.order(
-      [...this.reviews].sort((a, b) => a.rating - b.rating),
-      order
-    );
-  }
-
-  private sortHours(order: SortOrder): ReviewSet {
-    return this.order(
-      [...this.reviews].sort((a, b) => a.hours - b.hours),
+      [...this.reviews].sort((a, b) => a[prop].localeCompare(b[prop])),
       order
     );
   }
@@ -42,15 +42,31 @@ export class ReviewSet {
     return new ReviewSet(order === SortOrder.Ascending ? reviews.reverse() : reviews);
   }
 
-  sort(criterium: 'date' | 'rating' | 'hours', order: SortOrder) {
-    if (criterium === 'date') {
-      return this.sortDate(order);
-    } else if (criterium === 'rating') {
-      return this.sortRating(order);
-    } else if (criterium === 'hours') {
-      return this.sortHours(order);
-    } else {
-      throwError('Invalid sort criterium provided');
+  sort(sort: ReviewSetSort) {
+    switch (sort.criterium) {
+      case 'title':
+      case 'author':
+      case 'language':
+      case 'category': {
+        return this.sortAlphabetic(sort.criterium, sort.order);
+      }
+
+      case 'published':
+      case 'started':
+      case 'finished':
+      case 'reviewed': {
+        return this.sortNumeric(sort.criterium, sort.order);
+      }
+      case 'rating':
+      case 'hours':
+      case 'words': {
+        return this.sortNumeric(sort.criterium, sort.order);
+      }
+
+      default: {
+        console.log('ERROR'); // tk
+        return this.sortNumeric('finished', sort.order);
+      }
     }
   }
 }

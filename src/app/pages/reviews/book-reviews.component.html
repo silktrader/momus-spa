@@ -26,15 +26,16 @@
 
       <mat-form-field class="sort-select">
         <mat-label>Sort</mat-label>
-        <mat-select [(value)]="sortCriterium" (selectionChange)="updateBooks()">
-          <mat-option value="date">Date Read</mat-option>
+        <mat-select [(value)]="sort.criterium" (selectionChange)="updateBooks()">
+          <mat-option value="finished">Date Read</mat-option>
           <mat-option value="rating">Rating</mat-option>
-          <mat-option value="hours">Reading Time</mat-option>
+          <mat-option value="hours">Hours</mat-option>
+          <mat-option value="words">Words</mat-option>
         </mat-select>
       </mat-form-field>
 
       <button mat-icon-button aria-label="Sort Order Toggle" (click)="toggleSortOrder()">
-        <mat-icon *ngIf="sortOrder === 'asc'; else elseBlock">arrow_upward</mat-icon>
+        <mat-icon *ngIf="sort.order === 'asc'; else elseBlock">arrow_upward</mat-icon>
         <ng-template #elseBlock>
           <mat-icon>arrow_downward</mat-icon>
         </ng-template>

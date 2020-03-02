@@ -6,6 +6,11 @@ tr:hover {
   background-color: var(--accent-lighter-color);
 }
 
+// disable hover color for header row
+.table-header:hover {
+  background-color: inherit;
+}
+
 .title-cell {
   padding-right: 1rem; // allow for some room
 }
